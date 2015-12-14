@@ -2,7 +2,7 @@
   "name": "@micro-js/flatten-gen",
   "description": "Flatten a generator.",
   "repository": "git://github.com/micro-js/flatten-gen.git",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
