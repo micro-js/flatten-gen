@@ -1,5 +1,5 @@
 {
-  "name": "@micro-js/flatten-gen",
+  "name": "@f/flatten-gen",
   "description": "Flatten a generator.",
   "repository": "git://github.com/micro-js/flatten-gen.git",
   "version": "1.0.0",
@@ -9,9 +9,9 @@
     "postversion": "git push && git push --tags && npm publish --access=public"
   },
   "dependencies": {
-    "@micro-js/is-generator": "^1.1.1",
-    "@micro-js/is-generator-object": "^1.1.0",
-    "@micro-js/slice": "^1.0.0"
+    "@f/is-generator": "^1.1.1",
+    "@f/is-generator-object": "^1.1.0",
+    "@f/slice": "^1.0.0"
   },
   "devDependencies": {
     "tape": "^4.2.2"

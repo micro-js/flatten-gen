@@ -10,12 +10,12 @@ Flatten a generator.
 
 ## Installation
 
-    $ npm install @micro-js/flatten-gen
+    $ npm install @f/flatten-gen
 
 ## Usage
 
 ```js
-var flatten = require('@micro-js/flatten-gen')
+var flatten = require('@f/flatten-gen')
 
 let it = flatten(nested)()
 
@@ -52,5 +52,5 @@ MIT
 [git-url]: https://github.com/micro-js/flatten-gen
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
 [standard-url]: https://github.com/feross/standard
-[npm-image]: https://img.shields.io/npm/v/@micro-js/flatten-gen.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/@micro-js/flatten-gen
+[npm-image]: https://img.shields.io/npm/v/@f/flatten-gen.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@f/flatten-gen
