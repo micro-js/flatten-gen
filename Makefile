@@ -12,7 +12,7 @@ node_modules: package.json
 	@npm install
 
 test: node_modules
-	@${BIN}/tape test/*
+	@${BIN}/tape -r babel-register -r babel-polyfill test/*
 
 validate: node_modules
 	@standard
