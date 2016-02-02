@@ -36,9 +36,10 @@ function * two () {
 
 ## API
 
-### flattenGen(gen)
+### flattenGen(gen, tail)
 
 - `gen` - nested generator to flatten
+- `tail` - whether to yield the return values if they are generators
 
 **Returns:** a flattened generator
 
