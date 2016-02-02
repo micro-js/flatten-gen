@@ -17,4 +17,10 @@ test: node_modules
 validate: node_modules
 	@standard
 
+clean:
+	@rm -rf lib
+
+build: clean
+	babel src --out-dir lib
+
 .PHONY: test validate release
