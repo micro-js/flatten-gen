@@ -13,7 +13,6 @@ var test = require('tape')
 
 test('should handle no yield', (t) => {
   let it = flatten(justReturn)()
-  console.log('it', it)
   let next = it.next()
   t.equal(next.value, 'foo')
   t.equal(next.done, true)
