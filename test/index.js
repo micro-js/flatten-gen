@@ -4,7 +4,7 @@
  * Imports
  */
 
-var flatten = require('..')
+var flatten = require('../src')
 var test = require('tape')
 
 /**
@@ -106,17 +106,18 @@ test('should flatten', (t) => {
   t.end()
 
   function * child1 () {
-    return 'child 1'
+    yield 'child 1'
   }
 
   function * child2 () {
-    return 'child 2'
+    yield 'child 2'
+    return 'hello'
   }
 
   function * parent () {
     yield 'parent start'
     yield child1()
-    yield child2()
+    t.equal(yield child2(), 'hello')
     yield 'parent end'
   }
 })
@@ -143,27 +144,28 @@ test('should handle deply nested and yield *s', (t) => {
     }
   })
   // action 1 yield
-  t.equal(it.next().value, undefined)
-  // action 1 res
-  t.equal(it.next('res').value, 'res')
+  t.ok(it.next().value === undefined, 'action 1 done')
 
-  // * action 2 yield
+  // * action 2 yield 1
   t.deepEqual(it.next().value, {
     type: 'ASYNC',
     payload: 'foo'
   })
-  // * action 2 res
+  // * action 2 yield 2
   t.deepEqual(it.next('bat').value, {
     type: 'ACTION_2',
     payload: {
       async: 'bat'
     }
   })
-  // action 2 yield internal
+  // * action 2 return
+  t.deepEqual(it.next().value,  'hello')
+
   t.deepEqual(it.next().value, {
     type: 'ASYNC',
     payload: 'foo'
   })
+
   // action 2 yield
   t.deepEqual(it.next('bat').value, {
     type: 'ACTION_2',
@@ -173,7 +175,7 @@ test('should handle deply nested and yield *s', (t) => {
   })
   // action 2 res
   let next = it.next({res: 200})
-  t.deepEqual(next.value, {res: 200})
+  t.deepEqual(next.value, 'hello')
   t.equal(next.done, true)
 
   t.end()
@@ -201,12 +203,13 @@ test('should handle deply nested and yield *s', (t) => {
   }
 
   function * action2 (opt1, opt2) {
-    return {
+    yield {
       type: 'ACTION_2',
       payload: {
-        async: yield * async(opt1, opt2)
+        async: yield async(opt1, opt2)
       }
     }
+    return 'hello'
   }
 
   function * async(opt1, opt2) {

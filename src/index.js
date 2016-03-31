@@ -29,7 +29,7 @@ function flatten (gen, tail) {
     while (!next.done) {
       try {
         if (isGeneratorObject(next.value) || isGenerator(next.value)) {
-          arg = yield yield* flatten.call(self, next.value)(arg)
+          arg = yield* flatten.call(self, next.value)(arg)
         } else {
           arg = yield next.value
         }
